@@ -3,16 +3,16 @@ import { Icons } from './Icons';
 
 export const Hero: React.FC = () => {
   return (
-    <section id="home" className="relative min-h-[100svh] md:h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image with Overlay */}
-      <div className="absolute inset-0 z-0">
+    <section id="home" className="relative min-h-[100svh] md:h-screen flex items-center justify-center overflow-hidden bg-gray-950">
+      {/* Background Image with Matte Overlay */}
+      <div className="absolute inset-0 z-0 opacity-40">
         <img 
           src="/assets/hero/hero-bg.webp" 
           alt="Clínica Estética Virtuosa" 
-          className="w-full h-full object-cover object-center md:object-top blur-[2px] scale-105"
+          className="w-full h-full object-cover object-center md:object-top blur-sm scale-105 brightness-50 grayscale-[0.2]"
           loading="eager"
         />
-        <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-gray-900/90 via-gray-900/70 to-gray-900/30"></div>
+        <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-gray-950/80 via-gray-950/40 to-transparent"></div>
       </div>
 
       {/* Content */}
