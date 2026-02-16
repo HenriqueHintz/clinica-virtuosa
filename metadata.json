@@ -1,0 +1,7 @@
+{
+  "name": "Clínica Estética Virtuosa Landing Page",
+  "description": "High-conversion institutional landing page for aesthetic clinic chain with multi-unit local SEO strategy.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
