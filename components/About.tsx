@@ -93,8 +93,8 @@ export const About: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Column: Feature Grid */}
-          <div className="w-full lg:w-1/2">
+          {/* Right Column: Feature Grid - Hidden on mobile as per user request */}
+          <div className="hidden md:block w-full lg:w-1/2">
             <div className="grid grid-cols-2 gap-3 md:gap-6">
               {features.map((feature, index) => (
                 <motion.div 
