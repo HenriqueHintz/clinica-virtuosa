@@ -72,10 +72,6 @@ export const Hero: React.FC = () => {
                alt="Estética de Resultados" 
                className="relative z-10 w-full h-auto max-h-[70vh] object-contain drop-shadow-2xl rounded-2xl transform hover:scale-[1.02] transition-all duration-500"
              />
-             <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-brand-500/10 backdrop-blur-xl border border-white/10 rounded-2xl z-20 flex flex-col items-center justify-center text-white p-4 text-center">
-                <Icons.Sparkles className="w-8 h-8 text-brand-400 mb-1" />
-                <span className="text-[10px] font-bold uppercase tracking-tighter">Resultados Reais</span>
-             </div>
           </div>
         </div>
       </div>
