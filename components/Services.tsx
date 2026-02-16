@@ -1,3 +1,4 @@
+import React from 'react';
 import { SERVICES } from '../constants';
 import { Icons } from './Icons';
 import { ProcedureModal } from './ProcedureModal';
@@ -107,7 +108,7 @@ export const Services: React.FC = () => {
                    </div>
                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors"></div>
                    {service.subServices && (
-                     <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm shadow-sm px-2 px-1.5 rounded-lg text-[10px] font-bold text-brand-600 uppercase tracking-tighter flex items-center gap-1.5">
+                     <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm shadow-sm px-1.5 rounded-lg text-[10px] font-bold text-brand-600 uppercase tracking-tighter flex items-center gap-1.5">
                        <Icons.Sparkles className="w-3 h-3" />
                        Conheça os Procedimentos
                      </div>
