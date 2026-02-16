@@ -81,7 +81,7 @@ export const About: React.FC = () => {
                 rel="noreferrer"
                 className="bg-brand-500 hover:bg-brand-600 text-white px-6 md:px-8 py-3.5 md:py-4 rounded-full font-bold text-center transition-all shadow-lg hover:shadow-brand-500/30 flex items-center justify-center gap-2 text-sm md:text-base active:scale-95"
               >
-                Agendar Avaliação Grátis
+                Agendar Avaliação
                 <Icons.ArrowRight className="w-5 h-5" />
               </a>
               <a 
