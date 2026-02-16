@@ -108,12 +108,16 @@ export const ProcedureModal: React.FC<ProcedureModalProps> = ({ isOpen, onClose,
                         : 'bg-gray-50 hover:bg-white border-transparent hover:border-brand-100 hover:shadow-md'
                       }`}
                     >
-                      {/* Selection Indicator */}
-                      {isSelected && (
-                        <div className="absolute top-2 right-2 text-brand-500">
-                          <Icons.CheckCircle className="w-5 h-5" />
+                      {/* Checkbox Indictor */}
+                      <div className="mt-1 flex-shrink-0">
+                        <div className={`w-5 h-5 rounded-md border-2 flex items-center justify-center transition-all ${
+                          isSelected 
+                          ? 'bg-brand-500 border-brand-500 text-white' 
+                          : 'bg-white border-gray-300 group-hover:border-brand-300'
+                        }`}>
+                          {isSelected && <Icons.CheckCircle className="w-3.5 h-3.5" />}
                         </div>
-                      )}
+                      </div>
 
                       <div className={`w-10 h-10 md:w-12 md:h-12 rounded-xl shadow-sm flex items-center justify-center flex-shrink-0 transition-colors ${
                         isSelected ? 'bg-brand-500 text-white' : 'bg-white text-brand-500 group-hover:bg-brand-500 group-hover:text-white'
