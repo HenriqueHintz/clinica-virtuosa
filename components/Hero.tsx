@@ -38,7 +38,7 @@ export const Hero: React.FC = () => {
                 href="#locations"
                 className="bg-brand-500 hover:bg-brand-600 text-white px-6 md:px-8 py-3.5 md:py-4 rounded-lg font-bold text-base md:text-lg text-center transition-all transform hover:-translate-y-1 shadow-lg shadow-brand-500/30 flex items-center justify-center gap-2 active:scale-95"
               >
-                Agendar Avaliação Gratuita
+                Agendar Avaliação
                 <Icons.ArrowRight className="w-5 h-5" />
               </a>
               <a 
@@ -47,15 +47,6 @@ export const Hero: React.FC = () => {
               >
                 Tratamentos
               </a>
-            </div>
-
-            <div className="flex flex-col gap-1 ml-0 sm:ml-4 mt-4 sm:mt-0 border-l border-white/20 pl-4">
-              <div className="flex gap-0.5 text-yellow-400">
-                {[...Array(5)].map((_, i) => <Icons.Star key={i} className="w-4 h-4 fill-current" />)}
-              </div>
-              <p className="text-sm font-medium text-gray-200">
-                <span className="font-bold text-white">4.9/5</span> • +2.500 clientes
-              </p>
             </div>
           </div>
 
