@@ -102,15 +102,19 @@ export const Services: React.FC = () => {
                 onClick={() => service.subServices ? setActiveService(service) : null}
                 className={`min-w-[85vw] sm:min-w-[320px] md:min-w-0 snap-center group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 flex flex-col ${service.subServices ? 'cursor-pointer hover:border-brand-200' : ''}`}
               >
-                <div className={`h-32 md:h-44 overflow-hidden relative bg-gradient-to-br ${scheme.bg} flex-shrink-0`}>
-                   <div className="absolute inset-0 flex items-center justify-center opacity-20">
-                     <IconComponent className={`w-20 h-20 md:w-28 md:h-28 ${scheme.icon}`} />
-                   </div>
-                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors"></div>
+                <div className="h-32 md:h-44 overflow-hidden relative bg-gray-100 flex-shrink-0">
+                   <img 
+                     src={service.image} 
+                     alt={service.title}
+                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                   />
+                   <div className={`absolute inset-0 bg-gradient-to-br ${scheme.bg} opacity-20`}></div>
+                   <div className="absolute inset-0 bg-black/5 group-hover:bg-black/20 transition-colors"></div>
+                   
                    {service.subServices && (
-                     <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm shadow-sm px-1.5 rounded-lg text-[10px] font-bold text-brand-600 uppercase tracking-tighter flex items-center gap-1.5">
+                     <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm shadow-sm px-2 py-1 rounded-lg text-[10px] font-bold text-brand-600 uppercase tracking-tighter flex items-center gap-1.5 z-10">
                        <Icons.Sparkles className="w-3 h-3" />
-                       Conheça os Procedimentos
+                       Conheça as Opções
                      </div>
                    )}
                 </div>

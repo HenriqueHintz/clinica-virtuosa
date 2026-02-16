@@ -1,10 +1,13 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { UNITS } from '../constants';
 import { Icons } from './Icons';
 
 export const Locations: React.FC = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [showMap, setShowMap] = useState(false);
+  const [lightboxImage, setLightboxImage] = useState<string | null>(null);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
 
   const selectedUnit = UNITS[selectedIndex];
 
@@ -18,9 +21,45 @@ export const Locations: React.FC = () => {
     setShowMap(false);
   }, []);
 
+  const openLightbox = (index: number) => {
+    setLightboxIndex(index);
+    setLightboxImage(selectedUnit.images![index]);
+  };
+
+  const closeLightbox = () => {
+    setLightboxImage(null);
+  };
+
+  const nextLightboxImage = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    const newIndex = (lightboxIndex + 1) % selectedUnit.images!.length;
+    setLightboxIndex(newIndex);
+    setLightboxImage(selectedUnit.images![newIndex]);
+  };
+
+  const prevLightboxImage = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    const newIndex = (lightboxIndex - 1 + selectedUnit.images!.length) % selectedUnit.images!.length;
+    setLightboxIndex(newIndex);
+    setLightboxImage(selectedUnit.images![newIndex]);
+  };
+
+  // Prevent scroll when lightbox is open
+  useEffect(() => {
+    if (lightboxImage) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [lightboxImage]);
+
   return (
     <section id="locations" className="pt-10 md:pt-12 pb-6 md:pb-8 bg-white scroll-mt-20">
       <div className="container mx-auto px-5 md:px-4">
+        {/* ... (rest of the header remains the same) */}
         <div className="text-center mb-6 md:mb-10">
           <h2 className="text-brand-500 font-semibold tracking-wide uppercase text-xs md:text-sm mb-2 md:mb-3">Onde Estamos</h2>
           <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900">Encontre a Virtuosa mais próxima</h3>
@@ -116,7 +155,10 @@ export const Locations: React.FC = () => {
             <div className="flex-grow bg-gray-200 relative min-h-[220px] md:min-h-[300px]">
                {selectedUnit.images && selectedUnit.images.length > 0 && !showMap ? (
                  <div className="absolute inset-0 w-full h-full flex flex-col md:flex-row">
-                    <div className="w-full md:w-1/2 h-1/2 md:h-full relative overflow-hidden group">
+                    <div 
+                      className="w-full md:w-1/2 h-1/2 md:h-full relative overflow-hidden group cursor-zoom-in"
+                      onClick={() => openLightbox(0)}
+                    >
                       <img 
                         src={selectedUnit.images[0]} 
                         alt={`${selectedUnit.name} - Principal`}
@@ -124,10 +166,15 @@ export const Locations: React.FC = () => {
                         loading="lazy"
                       />
                       <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+                      <div className="absolute bottom-4 left-4 bg-white/80 backdrop-blur-sm px-2 py-1 rounded text-[10px] font-bold text-gray-700 opacity-0 group-hover:opacity-100 transition-opacity">Ver foto</div>
                     </div>
                     <div className="w-full md:w-1/2 h-1/2 md:h-full grid grid-cols-2 grid-rows-2">
                       {selectedUnit.images.slice(1, 5).map((img, idx) => (
-                        <div key={idx} className="relative overflow-hidden group border-l border-b last:border-b-0 border-white/20">
+                        <div 
+                          key={idx} 
+                          className="relative overflow-hidden group border-l border-b last:border-b-0 border-white/20 cursor-zoom-in"
+                          onClick={() => openLightbox(idx + 1)}
+                        >
                           <img 
                             src={img} 
                             alt={`${selectedUnit.name} - Galeria ${idx + 1}`}
@@ -245,6 +292,71 @@ export const Locations: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Lightbox Modal */}
+      <AnimatePresence>
+        {lightboxImage && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-sm p-4 md:p-10">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={closeLightbox}
+              className="absolute inset-0 cursor-zoom-out"
+            />
+            
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="relative max-w-5xl w-full max-h-full flex items-center justify-center z-10"
+            >
+              <img 
+                src={lightboxImage} 
+                alt={`${selectedUnit.name} - Ampliada`}
+                className="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl"
+              />
+              
+              {/* Navigation Controls */}
+              <button 
+                onClick={prevLightboxImage}
+                className="absolute left-0 -translate-x-full md:-translate-x-16 w-12 h-12 bg-white/10 hover:bg-white/20 text-white rounded-full flex items-center justify-center transition-colors hidden md:flex"
+                aria-label="Foto anterior"
+              >
+                <Icons.ChevronDown className="w-8 h-8 rotate-90" />
+              </button>
+              
+              <button 
+                onClick={nextLightboxImage}
+                className="absolute right-0 translate-x-full md:translate-x-16 w-12 h-12 bg-white/10 hover:bg-white/20 text-white rounded-full flex items-center justify-center transition-colors hidden md:flex"
+                aria-label="Próxima foto"
+              >
+                <Icons.ChevronDown className="w-8 h-8 -rotate-90" />
+              </button>
+              
+              {/* Close Button */}
+              <button 
+                onClick={closeLightbox}
+                className="absolute -top-12 right-0 md:-right-12 w-10 h-10 bg-white/10 hover:bg-white/20 text-white rounded-full flex items-center justify-center transition-colors"
+                aria-label="Fechar"
+              >
+                <Icons.Close className="w-6 h-6" />
+              </button>
+              
+              {/* Image Counter */}
+              <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 text-white/60 text-sm font-medium">
+                {lightboxIndex + 1} / {selectedUnit.images?.length}
+              </div>
+            </motion.div>
+            
+            {/* Mobile Swipe Simulation / Taps */}
+            <div className="md:hidden absolute inset-0 flex">
+              <div className="flex-1" onClick={prevLightboxImage}></div>
+              <div className="flex-1" onClick={nextLightboxImage}></div>
+            </div>
+          </div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };

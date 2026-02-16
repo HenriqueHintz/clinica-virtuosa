@@ -127,21 +127,83 @@ export const About: React.FC = () => {
         </div>
       </div>
 
-      {/* Bottom Stats Bar */}
-      <div className="w-full bg-brand-500 text-white py-6 md:py-12">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 text-center divide-white/10 md:divide-x">
+      {/* Bottom Stats Bar - Noir Redesign */}
+      <div className="w-full bg-[#0a0a0a] text-white py-12 md:py-20 relative overflow-hidden">
+        {/* Decorative elements for Noir essence */}
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-brand-500/30 to-transparent"></div>
+        <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-brand-500/30 to-transparent"></div>
+        <div className="absolute -left-20 top-1/2 -translate-y-1/2 w-64 h-64 bg-brand-500/5 blur-[100px] rounded-full"></div>
+        <div className="absolute -right-20 top-1/2 -translate-y-1/2 w-64 h-64 bg-brand-500/5 blur-[100px] rounded-full"></div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
             {stats.map((stat, index) => (
-              <div key={index} className="flex flex-col items-center">
-                <span className="text-2xl sm:text-3xl md:text-5xl font-bold mb-1 md:mb-2">{stat.value}</span>
-                <span className="text-xs md:text-base font-medium opacity-90 max-w-[150px]">
+              <motion.div 
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="flex flex-col items-center group"
+              >
+                <div className="relative mb-2 md:mb-4">
+                  <span className="text-4xl sm:text-5xl md:text-7xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-400">
+                    <Counter value={stat.value} />
+                  </span>
+                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-8 h-1 bg-brand-500 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+                </div>
+                <span className="text-xs md:text-sm font-bold uppercase tracking-[0.2em] text-gray-400 group-hover:text-brand-400 transition-colors duration-300 max-w-[150px] text-center">
                   {stat.label}
                 </span>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </div>
     </section>
   );
+};
+
+// Counter component for numbers
+const Counter: React.FC<{ value: string }> = ({ value }) => {
+  const [displayValue, setDisplayValue] = React.useState("0");
+  const nodeRef = React.useRef(null);
+  const isInView = (window as any).IntersectionObserver ? true : false; // Placeholder check
+  
+  // Extract number and suffix
+  const numericMatch = value.match(/\d+/);
+  const target = numericMatch ? parseInt(numericMatch[0]) : 0;
+  const suffix = value.replace(/\d+/g, "");
+
+  React.useEffect(() => {
+    let startTime: number | null = null;
+    let animationFrame: number;
+
+    const animate = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / 2000, 1);
+      
+      // Power3 easeOut function
+      const easeOut = 1 - Math.pow(1 - progress, 3);
+      const current = Math.floor(easeOut * target);
+      
+      setDisplayValue(`${current}${suffix}`);
+
+      if (progress < 1) {
+        animationFrame = requestAnimationFrame(animate);
+      }
+    };
+
+    // We'll use a simple entrance detection for now, since we're inside whileInView parent
+    const timeout = setTimeout(() => {
+      animationFrame = requestAnimationFrame(animate);
+    }, 200);
+
+    return () => {
+      cancelAnimationFrame(animationFrame);
+      clearTimeout(timeout);
+    };
+  }, [target, suffix]);
+
+  return <span ref={nodeRef}>{displayValue}</span>;
 };

@@ -173,8 +173,8 @@ export const Header: React.FC = () => {
             </div>
           </div>
 
-          {/* CTA Button — fixed at bottom */}
-          <div className="px-5 pb-6 pt-4 mt-auto flex-shrink-0 border-t border-gray-100">
+          {/* CTA Button — now right below units */}
+          <div className="px-5 pb-8 pt-2 flex-shrink-0">
             <a 
               href="#locations"
               className="bg-brand-500 hover:bg-brand-600 text-white w-full py-4 rounded-full font-bold text-center transition-all shadow-lg flex items-center justify-center gap-2 active:scale-95"

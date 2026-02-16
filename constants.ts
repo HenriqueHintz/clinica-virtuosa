@@ -87,7 +87,7 @@ export const SERVICES: Service[] = [
     id: 'monjifast',
     title: 'MonjiFast 90',
     description: 'Emagreça até 25% de gordura corporal em 3 meses com o protocolo mais avançado da atualidade.',
-    image: 'https://placehold.co/800x600/fbcfe8/be185d?text=MonjiFast+90',
+    image: '/assets/treatments/monjifast90.webp',
     icon: 'TrendingUp',
     subServices: [
       {
@@ -114,7 +114,7 @@ export const SERVICES: Service[] = [
     id: 'depilacao',
     title: 'Depilação a Laser',
     description: 'Tecnologia avançada para pele lisa e sem pelos. Conforto e eficácia comprovada.',
-    image: 'https://placehold.co/800x600/fbcfe8/be185d?text=Depilação+a+Laser',
+    image: '/assets/treatments/depilacao-laser.webp',
     icon: 'Sparkles',
     subServices: [
       { id: 'axilas', title: 'Axilas', description: 'Depilação a laser nas axilas.', icon: 'Sparkles' },
@@ -140,7 +140,7 @@ export const SERVICES: Service[] = [
     id: 'emagrecimento',
     title: 'Emagrecimento',
     description: 'Protocolos exclusivos para redução de medidas e perda de peso saudável.',
-    image: 'https://placehold.co/800x600/fbcfe8/be185d?text=Emagrecimento',
+    image: '/assets/treatments/emagrecimento.webp',
     icon: 'Scale',
     subServices: [
       {
@@ -227,7 +227,7 @@ export const SERVICES: Service[] = [
     id: 'faciais',
     title: 'Procedimentos Faciais',
     description: 'Rejuvenesça, hidrate e proteja sua pele com nossos procedimentos faciais.',
-    image: 'https://placehold.co/800x600/fbcfe8/be185d?text=Procedimentos+Faciais',
+    image: '/assets/treatments/procedimentos-faciais.webp',
     icon: 'Smile',
     subServices: [
       {
@@ -320,7 +320,7 @@ export const SERVICES: Service[] = [
     id: 'corporais',
     title: 'Procedimentos Corporais',
     description: 'Os procedimentos corporais da clínica são planejados para promover beleza, saúde e bem-estar.',
-    image: 'https://placehold.co/800x600/fbcfe8/be185d?text=Procedimentos+Corporais',
+    image: '/assets/treatments/procedimentos-corporais.webp',
     icon: 'Activity',
     subServices: [
       {
