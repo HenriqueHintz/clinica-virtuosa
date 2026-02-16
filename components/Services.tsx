@@ -82,7 +82,7 @@ export const Services: React.FC = () => {
         <div 
           ref={scrollRef}
           onScroll={handleScroll}
-          className="flex md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 overflow-x-auto pb-4 md:pb-0 scrollbar-hide snap-x snap-mandatory -mx-5 px-5 md:mx-0 md:px-0"
+          className="flex md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 md:gap-8 overflow-x-auto pb-4 md:pb-0 scrollbar-hide snap-x snap-mandatory -mx-5 px-5 md:mx-0 md:px-0"
         >
           {SERVICES.map((service, index) => {
             const IconComponent = (Icons as any)[service.icon] || Icons.Sparkles;
