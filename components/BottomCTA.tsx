@@ -60,7 +60,8 @@ export const BottomCTA: React.FC = () => {
           </a>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 items-center justify-center gap-6 md:gap-4 text-xs md:text-sm font-bold opacity-90 border-t border-white/20 pt-10 md:pt-10 max-w-3xl mx-auto">
+        {/* Trust Badges - Hidden on mobile as per user request */}
+        <div className="hidden md:grid grid-cols-1 md:grid-cols-3 items-center justify-center gap-6 md:gap-4 text-xs md:text-sm font-bold opacity-90 border-t border-white/20 pt-10 md:pt-10 max-w-3xl mx-auto">
            <div className="flex items-center justify-center gap-3">
              <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
                <Icons.Shield className="w-5 h-5" />
