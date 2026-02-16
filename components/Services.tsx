@@ -3,6 +3,36 @@ import { SERVICES } from '../constants';
 import { Icons } from './Icons';
 
 export const Services: React.FC = () => {
+  const [selectedIndex, setSelectedIndex] = React.useState(0);
+  const scrollRef = React.useRef<HTMLDivElement>(null);
+
+  const nextService = () => {
+    const nextIndex = (selectedIndex + 1) % SERVICES.length;
+    setSelectedIndex(nextIndex);
+    if (scrollRef.current) {
+      const scrollAmount = scrollRef.current.scrollWidth / SERVICES.length;
+      scrollRef.current.scrollTo({ left: scrollAmount * nextIndex, behavior: 'smooth' });
+    }
+  };
+
+  const prevService = () => {
+    const prevIndex = (selectedIndex - 1 + SERVICES.length) % SERVICES.length;
+    setSelectedIndex(prevIndex);
+    if (scrollRef.current) {
+      const scrollAmount = scrollRef.current.scrollWidth / SERVICES.length;
+      scrollRef.current.scrollTo({ left: scrollAmount * prevIndex, behavior: 'smooth' });
+    }
+  };
+
+  // Update index on scroll
+  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    if (window.innerWidth >= 768) return;
+    const scrollLeft = e.currentTarget.scrollLeft;
+    const width = e.currentTarget.offsetWidth;
+    const newIndex = Math.round(scrollLeft / width);
+    if (newIndex !== selectedIndex) setSelectedIndex(newIndex);
+  };
+
   return (
     <section id="services" className="pt-10 md:pt-12 pb-6 md:pb-8 bg-ice scroll-mt-20">
       <div className="container mx-auto px-5 md:px-4">
@@ -14,8 +44,43 @@ export const Services: React.FC = () => {
           </p>
         </div>
 
+        {/* Mobile: Navigation Arrows */}
+        <div className="flex md:hidden items-center justify-between mb-4">
+          <button 
+            onClick={prevService}
+            className="w-10 h-10 bg-white rounded-full shadow-sm flex items-center justify-center text-gray-400 active:text-brand-500 transition-colors border border-gray-100"
+            aria-label="Anterior"
+          >
+            <Icons.ChevronDown className="w-5 h-5 rotate-90" />
+          </button>
+          <div className="flex flex-col items-center">
+            <span className="text-[10px] uppercase font-bold text-brand-500 bg-brand-50 px-2 py-0.5 rounded-full border border-brand-100">
+              {SERVICES[selectedIndex].title}
+            </span>
+            <div className="flex gap-1 mt-1.5">
+              {SERVICES.map((_, i) => (
+                <div 
+                  key={i} 
+                  className={`h-1 rounded-full transition-all ${selectedIndex === i ? 'w-4 bg-brand-500' : 'w-1 bg-gray-300'}`}
+                />
+              ))}
+            </div>
+          </div>
+          <button 
+            onClick={nextService}
+            className="w-10 h-10 bg-white rounded-full shadow-sm flex items-center justify-center text-gray-400 active:text-brand-500 transition-colors border border-gray-100"
+            aria-label="Próximo"
+          >
+            <Icons.ChevronDown className="w-5 h-5 -rotate-90" />
+          </button>
+        </div>
+
         {/* Mobile: Horizontal Scroll View / Desktop: Grid View */}
-        <div className="flex md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 overflow-x-auto pb-4 md:pb-0 scrollbar-hide snap-x snap-mandatory -mx-5 px-5 md:mx-0 md:px-0">
+        <div 
+          ref={scrollRef}
+          onScroll={handleScroll}
+          className="flex md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 overflow-x-auto pb-4 md:pb-0 scrollbar-hide snap-x snap-mandatory -mx-5 px-5 md:mx-0 md:px-0"
+        >
           {SERVICES.map((service, index) => {
             const IconComponent = (Icons as any)[service.icon] || Icons.Sparkles;
             
@@ -31,7 +96,7 @@ export const Services: React.FC = () => {
             return (
               <div 
                 key={service.id} 
-                className="min-w-[280px] sm:min-w-[320px] md:min-w-0 snap-center group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 flex flex-col"
+                className="min-w-[85vw] sm:min-w-[320px] md:min-w-0 snap-center group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 flex flex-col"
               >
                 <div className={`h-32 md:h-44 overflow-hidden relative bg-gradient-to-br ${scheme.bg} flex-shrink-0`}>
                    <div className="absolute inset-0 flex items-center justify-center opacity-20">

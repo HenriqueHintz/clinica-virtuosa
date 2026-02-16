@@ -5,6 +5,34 @@ import { Icons } from './Icons';
 
 export const Faq: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const scrollRef = React.useRef<HTMLDivElement>(null);
+
+  const nextFaq = () => {
+    const nextIndex = (selectedIndex + 1) % FAQS.length;
+    setSelectedIndex(nextIndex);
+    if (scrollRef.current) {
+      const scrollAmount = scrollRef.current.scrollWidth / FAQS.length;
+      scrollRef.current.scrollTo({ left: scrollAmount * nextIndex, behavior: 'smooth' });
+    }
+  };
+
+  const prevFaq = () => {
+    const prevIndex = (selectedIndex - 1 + FAQS.length) % FAQS.length;
+    setSelectedIndex(prevIndex);
+    if (scrollRef.current) {
+      const scrollAmount = scrollRef.current.scrollWidth / FAQS.length;
+      scrollRef.current.scrollTo({ left: scrollAmount * prevIndex, behavior: 'smooth' });
+    }
+  };
+
+  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    if (window.innerWidth >= 768) return;
+    const scrollLeft = e.currentTarget.scrollLeft;
+    const width = e.currentTarget.offsetWidth;
+    const newIndex = Math.round(scrollLeft / width);
+    if (newIndex !== selectedIndex) setSelectedIndex(newIndex);
+  };
 
   return (
     <section id="faq" className="pt-10 md:pt-12 pb-6 md:pb-8 bg-ice relative overflow-hidden scroll-mt-20">
@@ -16,16 +44,41 @@ export const Faq: React.FC = () => {
         <div className="text-center mb-6 md:mb-10">
           <h2 className="text-brand-500 font-bold tracking-wide uppercase text-xs md:text-sm mb-2 md:mb-3">Dúvidas Frequentes</h2>
           <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 mb-4 md:mb-6">Tire suas dúvidas</h3>
-          <p className="text-gray-500 text-sm md:text-lg">
-            Confira as perguntas mais comuns de nossas clientes.
-          </p>
         </div>
 
-        <div className="space-y-3 md:space-y-4">
+        {/* Mobile: Navigation Arrows */}
+        <div className="flex md:hidden items-center justify-between mb-4">
+          <button 
+            onClick={prevFaq}
+            className="w-10 h-10 bg-white rounded-full shadow-sm flex items-center justify-center text-gray-400 active:text-brand-500 transition-colors border border-gray-100"
+            aria-label="Anterior"
+          >
+            <Icons.ChevronDown className="w-5 h-5 rotate-90" />
+          </button>
+          <div className="flex flex-col items-center">
+            <span className="text-[10px] uppercase font-bold text-brand-500 bg-brand-50 px-3 py-0.5 rounded-full border border-brand-100">
+              Pergunta {selectedIndex + 1} de {FAQS.length}
+            </span>
+          </div>
+          <button 
+            onClick={nextFaq}
+            className="w-10 h-10 bg-white rounded-full shadow-sm flex items-center justify-center text-gray-400 active:text-brand-500 transition-colors border border-gray-100"
+            aria-label="Próximo"
+          >
+            <Icons.ChevronDown className="w-5 h-5 -rotate-90" />
+          </button>
+        </div>
+
+        {/* Mobile: Horizontal scroll on mobile, Accordion on desktop */}
+        <div 
+          ref={scrollRef}
+          onScroll={handleScroll}
+          className="flex md:block md:space-y-4 overflow-x-auto pb-4 md:pb-0 scrollbar-hide snap-x snap-mandatory -mx-5 px-5 md:mx-0 md:px-0"
+        >
           {FAQS.map((faq, index) => (
             <div 
               key={index} 
-              className={`bg-white rounded-xl md:rounded-2xl border transition-all duration-300 ${
+              className={`min-w-[85vw] md:min-w-0 snap-center mx-2 md:mx-0 bg-white rounded-xl md:rounded-2xl border transition-all duration-300 ${
                 openIndex === index 
                   ? 'border-brand-200 shadow-lg ring-1 ring-brand-100' 
                   : 'border-gray-100 shadow-sm hover:border-brand-100'
