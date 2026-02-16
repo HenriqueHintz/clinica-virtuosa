@@ -18,16 +18,7 @@ export const Hero: React.FC = () => {
       {/* Content */}
       <div className="container mx-auto px-5 md:px-4 z-10 relative mt-20 md:mt-0">
         <div className="grid md:grid-cols-2 items-center gap-8 lg:gap-12">
-          {/* Desktop Only Side Image (Left Side) */}
-          <div className="hidden md:flex items-center justify-center relative h-full py-12 order-1 md:order-1">
-             <img 
-               src="/assets/hero/hero-side.webp" 
-               alt="Estética de Resultados" 
-               className="relative z-10 w-full h-auto max-h-[75vh] object-contain drop-shadow-2xl rounded-2xl transform hover:scale-[1.02] transition-all duration-500"
-             />
-          </div>
-
-          <div className="max-w-2xl text-white order-2 md:order-2">
+          <div className="max-w-2xl text-white">
             <div className="inline-flex items-center gap-2 bg-brand-500/20 backdrop-blur-sm border border-brand-400/30 px-3 py-1 rounded-full text-brand-200 text-[10px] md:text-xs font-semibold mb-4 md:mb-6 uppercase tracking-wider">
               <Icons.Star className="w-3 h-3 text-brand-400" />
               Líder em Estética na Grande Florianópolis
@@ -71,6 +62,15 @@ export const Hero: React.FC = () => {
                 Desde 2016
               </div>
             </div>
+          </div>
+
+          {/* Desktop Only Side Image (Right Side) */}
+          <div className="hidden md:flex items-center justify-center relative h-full py-12">
+             <img 
+               src="/assets/hero/hero-side.webp" 
+               alt="Estética de Resultados" 
+               className="relative z-10 w-full h-auto max-h-[75vh] object-contain drop-shadow-2xl rounded-2xl transform hover:scale-[1.02] transition-all duration-500"
+             />
           </div>
         </div>
       </div>
