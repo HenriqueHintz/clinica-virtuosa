@@ -9,7 +9,7 @@ export const Hero: React.FC = () => {
         <img 
           src="/assets/hero/hero-bg.webp" 
           alt="Clínica Estética Virtuosa" 
-          className="w-full h-full object-cover object-center md:object-top"
+          className="w-full h-full object-cover object-center md:object-top blur-[2px] scale-105"
           loading="eager"
         />
         <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-gray-900/90 via-gray-900/70 to-gray-900/30"></div>
@@ -65,12 +65,11 @@ export const Hero: React.FC = () => {
           </div>
 
           {/* Desktop Only Side Image */}
-          <div className="hidden md:block relative">
-             <div className="absolute -inset-4 bg-brand-500/20 blur-3xl rounded-full"></div>
+          <div className="hidden md:flex items-center justify-center relative h-full py-12">
              <img 
                src="/assets/hero/hero-side.webp" 
                alt="Estética de Resultados" 
-               className="relative z-10 w-full h-auto max-h-[70vh] object-contain drop-shadow-2xl rounded-2xl transform hover:scale-[1.02] transition-all duration-500"
+               className="relative z-10 w-full h-auto max-h-[75vh] object-contain drop-shadow-2xl rounded-2xl transform hover:scale-[1.02] transition-all duration-500"
              />
           </div>
         </div>
