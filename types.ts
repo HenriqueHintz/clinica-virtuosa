@@ -18,12 +18,20 @@ export interface Unit {
   facebook?: string;
 }
 
+export interface SubService {
+  id: string;
+  title: string;
+  description: string;
+  icon?: string;
+}
+
 export interface Service {
   id: string;
   title: string;
   description: string;
   image: string;
   icon: string;
+  subServices?: SubService[];
 }
 
 export interface Testimonial {

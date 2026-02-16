@@ -20,7 +20,14 @@ import {
   ArrowUp,
   Gift,
   User,
-  Users
+  Users,
+  Droplets,
+  Wind,
+  Zap,
+  Heart,
+  TrendingUp,
+  Grid,
+  Thermometer
 } from 'lucide-react';
 
 export const Icons = {
@@ -54,5 +61,12 @@ export const Icons = {
   ArrowUp,
   Gift,
   User,
-  Users
+  Users,
+  Droplets,
+  Wind,
+  Zap,
+  Heart,
+  TrendingUp,
+  Grid,
+  Thermometer
 };

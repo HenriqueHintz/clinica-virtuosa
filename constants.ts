@@ -106,10 +106,126 @@ export const SERVICES: Service[] = [
   },
   {
     id: 'corporais',
-    title: 'Cuidados Corporais',
-    description: 'Tratamento de celulite, estrias e flacidez com tecnologia de ponta.',
-    image: 'https://placehold.co/800x600/fbcfe8/be185d?text=Cuidados+Corporais',
-    icon: 'Activity'
+    title: 'Procedimentos Corporais',
+    description: 'Os procedimentos corporais da clínica são planejados para promover beleza, saúde e bem-estar, utilizando tecnologias avançadas.',
+    image: 'https://placehold.co/800x600/fbcfe8/be185d?text=Procedimentos+Corporais',
+    icon: 'Activity',
+    subServices: [
+      {
+        id: 'drenagem',
+        title: 'Drenagem Linfática',
+        description: 'Técnica que estimula o sistema linfático, favorecendo a eliminação de toxinas e reduzindo o inchaço.',
+        icon: 'Droplets'
+      },
+      {
+        id: 'modeladora',
+        title: 'Massagem Modeladora',
+        description: 'Procedimento que auxilia na redução de medidas e melhora a circulação sanguínea.',
+        icon: 'Wind'
+      },
+      {
+        id: 'velaryan',
+        title: 'Velaryan',
+        description: 'O Velaryan permite a lipólise de forma indolor, promovendo a redução do tecido adiposo e a estimulação de novos vasos linfáticos e sanguíneos.',
+        icon: 'Zap'
+      },
+      {
+        id: 'terapeutica',
+        title: 'Massagem Terapêutica',
+        description: 'A massagem visa o relaxamento, melhora a circulação, reduz o estresse e beneficia a saúde mental.',
+        icon: 'Heart'
+      },
+      {
+        id: 'lipo-turbinada',
+        title: 'Lipo Turbinada',
+        description: 'Associa massagem manual com ventosas para modelar o corpo e diminuir medidas, celulite e gordura localizada.',
+        icon: 'Zap'
+      },
+      {
+        id: 'hidratacao',
+        title: 'Hidratação Corporal',
+        description: 'Promove mais maciez, suavidade e melhora a textura da pele do corpo.',
+        icon: 'Droplets'
+      },
+      {
+        id: 'vasinhos',
+        title: 'Secagem de Vasinhos',
+        description: 'Tratamento para microvasinhos, buscando seu desaparecimento e melhora estética.',
+        icon: 'Activity'
+      },
+      {
+        id: 'pump-up',
+        title: 'Pump Up',
+        description: 'Ventosas pulsadas para tonificar glúteos, eliminar a celulite e melhorar o colágeno.',
+        icon: 'TrendingUp'
+      },
+      {
+        id: 'corrente-russa',
+        title: 'Corrente Russa',
+        description: 'Técnica que usa corrente elétrica para melhorar o tônus muscular e a circulação sanguínea.',
+        icon: 'Zap'
+      },
+      {
+        id: 'carboxiterapia',
+        title: 'Carboxiterapia',
+        description: 'Indicado para tratar celulite, estrias, flacidez, olheiras e gordura localizada.',
+        icon: 'Activity'
+      },
+      {
+        id: 'celulite',
+        title: 'Tratamento para Celulite',
+        description: 'Soluções para reduzir o aspecto "casca de laranja" da pele.',
+        icon: 'Grid'
+      },
+      {
+        id: 'hidrolipo',
+        title: 'Hidrolipo',
+        description: 'Injeção e ultrassom quebra células de gordura para resultados eficazes.',
+        icon: 'Zap'
+      },
+      {
+        id: 'heccus',
+        title: 'Heccus Turbo',
+        description: 'Eletroterapia computadorizada destinada a terapias corporais avançadas.',
+        icon: 'Zap'
+      },
+      {
+        id: 'cryogel',
+        title: 'Cryogel',
+        description: 'Resfria e trata a gordura localizada e a celulite, melhorando a silhueta.',
+        icon: 'Thermometer'
+      },
+      {
+        id: 'endermoterapia',
+        title: 'Endermoterapia',
+        description: 'Tratamento de vacuoterapia que trata a celulite e gordura de forma segura e indolor.',
+        icon: 'Wind'
+      },
+      {
+        id: 'crioplates',
+        title: 'Crioplates',
+        description: 'Criolipólise otimizada para redução de gordura e modelagem corporal.',
+        icon: 'Shield'
+      },
+      {
+        id: 'criofrequencia',
+        title: 'Criofrequência',
+        description: 'Une radiofrequência e crioterapia para reduzir gordura e flacidez.',
+        icon: 'Zap'
+      },
+      {
+        id: 'flaci-fast',
+        title: 'Flaci Fast',
+        description: 'Conjunto de técnicas exclusivas para tratar a flacidez de maneira rápida e segura.',
+        icon: 'Zap'
+      },
+      {
+        id: 'striort',
+        title: 'Procedimento Striort',
+        description: 'Aparelho de sucção para tratamento de estrias vermelhas e brancas.',
+        icon: 'Wind'
+      }
+    ]
   }
 ];
 
