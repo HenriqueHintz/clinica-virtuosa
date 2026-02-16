@@ -84,30 +84,242 @@ export const UNITS: Unit[] = [
 
 export const SERVICES: Service[] = [
   {
+    id: 'monjifast',
+    title: 'MonjiFast 90',
+    description: 'Emagreça até 25% de gordura corporal em 3 meses com o protocolo mais avançado da atualidade.',
+    image: 'https://placehold.co/800x600/fbcfe8/be185d?text=MonjiFast+90',
+    icon: 'TrendingUp',
+    subServices: [
+      {
+        id: 'consulta-medica',
+        title: 'Consulta Médica',
+        description: 'Acompanhamento especializado para garantir segurança e eficácia no seu processo.',
+        icon: 'User'
+      },
+      {
+        id: 'aplicacao-semanal',
+        title: 'Aplicação Semanal',
+        description: 'Protocolo de medicação semanal com acompanhamento rigoroso.',
+        icon: 'Zap'
+      },
+      {
+        id: 'acompanhamento-nutri',
+        title: 'Acompanhamento Nutricional',
+        description: 'Plano alimentar personalizado focado na queima de gordura e manutenção de peso.',
+        icon: 'Scale'
+      }
+    ]
+  },
+  {
     id: 'depilacao',
     title: 'Depilação a Laser',
     description: 'Tecnologia avançada para pele lisa e sem pelos. Conforto e eficácia comprovada.',
     image: 'https://placehold.co/800x600/fbcfe8/be185d?text=Depilação+a+Laser',
-    icon: 'Sparkles'
+    icon: 'Sparkles',
+    subServices: [
+      { id: 'axilas', title: 'Axilas', description: 'Depilação a laser nas axilas.', icon: 'Sparkles' },
+      { id: 'buco', title: 'Buço', description: 'Depilação a laser no buço.', icon: 'Sparkles' },
+      { id: 'meia-perna', title: 'Meia Perna', description: 'Depilação a laser da meia perna.', icon: 'Sparkles' },
+      { id: 'pes-dedos', title: 'Pés e Dedos', description: 'Depilação a laser nos pés e dedos.', icon: 'Sparkles' },
+      { id: 'pernas', title: 'Pernas Inteiras', description: 'Depilação a laser nas pernas inteiras.', icon: 'Sparkles' },
+      { id: 'coxas', title: 'Coxas', description: 'Depilação a laser nas coxas.', icon: 'Sparkles' },
+      { id: 'maos-dedos', title: 'Mãos e Dedos', description: 'Depilação a laser nas mãos e dedos.', icon: 'Sparkles' },
+      { id: 'barriga', title: 'Barriga Inteira', description: 'Depilação a laser na barriga inteira.', icon: 'Sparkles' },
+      { id: 'bracos', title: 'Braços Inteiros', description: 'Depilação a laser nos braços inteiros.', icon: 'Sparkles' },
+      { id: 'pescoco', title: 'Pescoço', description: 'Depilação a laser no pescoço.', icon: 'Sparkles' },
+      { id: 'glabela', title: 'Glabela', description: 'Depilação a laser na glabela.', icon: 'Sparkles' },
+      { id: 'rosto', title: 'Rosto Inteiro', description: 'Depilação a laser no rosto inteiro.', icon: 'Sparkles' },
+      { id: 'nuca', title: 'Nuca', description: 'Depilação a laser na nuca.', icon: 'Sparkles' },
+      { id: 'costas', title: 'Costas', description: 'Depilação a laser nas costas.', icon: 'Sparkles' },
+      { id: 'lombar', title: 'Lombar', description: 'Depilação a laser na lombar.', icon: 'Sparkles' },
+      { id: 'post-coxa', title: 'Posterior de Coxa', description: 'Depilação a laser no posterior de coxa.', icon: 'Sparkles' },
+      { id: 'virilha', title: 'Virilha', description: 'Depilação a laser na virilha.', icon: 'Sparkles' }
+    ]
   },
   {
     id: 'emagrecimento',
     title: 'Emagrecimento',
     description: 'Protocolos exclusivos para redução de medidas e perda de peso saudável.',
     image: 'https://placehold.co/800x600/fbcfe8/be185d?text=Emagrecimento',
-    icon: 'Scale'
+    icon: 'Scale',
+    subServices: [
+      {
+        id: 'drenagem-emag',
+        title: 'Drenagem Linfática',
+        description: 'Técnica que estimula o sistema linfático, favorecendo a eliminação de toxinas e reduzindo o inchaço.',
+        icon: 'Droplets'
+      },
+      {
+        id: 'mmi',
+        title: 'MMI (Método Mary Iaczinski)',
+        description: 'Técnicas únicas de massagem, tratamentos cosméticos e nutrição.',
+        icon: 'Sparkles'
+      },
+      {
+        id: 'detox',
+        title: 'Detox',
+        description: 'Tratamento com manta térmica que usa o calor para acelerar o metabolismo.',
+        icon: 'Thermometer'
+      },
+      {
+        id: 'criolipolise',
+        title: 'Criolipólise',
+        description: 'Método não invasivo que congela e elimina células de gordura.',
+        icon: 'Thermometer'
+      },
+      {
+        id: 'nutricionista',
+        title: 'Consulta com Nutricionista',
+        description: 'Plano nutricional personalizado baseado nos seus hábitos e preferências.',
+        icon: 'Scale'
+      },
+      {
+        id: 'ultradetox',
+        title: 'Ultradetox',
+        description: 'Protocolo exclusivo Virtuosa para transformar o corpo de forma rápida.',
+        icon: 'Zap'
+      },
+      {
+        id: 'enzimas',
+        title: 'Enzimas',
+        description: 'Enzimas para inibir o apetite e acelerar o metabolismo.',
+        icon: 'Activity'
+      },
+      {
+        id: 'criofast',
+        title: 'Criofast',
+        description: 'Protocolo exclusivo que trabalha a gordura localizada com o poder criogênico.',
+        icon: 'Shield'
+      },
+      {
+        id: 'lipo-fast',
+        title: 'Lipo Fast 2.0',
+        description: 'Perca até 12cm de circunferência abdominal em apenas 24 horas!',
+        icon: 'Zap'
+      },
+      {
+        id: 'infra',
+        title: 'Infra',
+        description: 'Acelera o metabolismo e queima a gordura localizada.',
+        icon: 'Zap'
+      },
+      {
+        id: 'lipo-sem-corte',
+        title: 'Lipo sem Corte',
+        description: 'Realiza a quebra da célula de gordura e remodelagem corporal.',
+        icon: 'Wind'
+      },
+      {
+        id: 'cryogel-emag',
+        title: 'Cryogel',
+        description: 'Resfria e trata a gordura localizada e a celulite.',
+        icon: 'Thermometer'
+      },
+      {
+        id: 'mix-ultra',
+        title: 'Mix Ultra',
+        description: 'Kit completo para resultados rápidos em emagrecimento.',
+        icon: 'Grid'
+      }
+    ]
   },
   {
     id: 'faciais',
     title: 'Procedimentos Faciais',
-    description: 'Botox, preenchimento e limpeza de pele para renovar sua autoestima.',
+    description: 'Rejuvenesça, hidrate e proteja sua pele com nossos procedimentos faciais.',
     image: 'https://placehold.co/800x600/fbcfe8/be185d?text=Procedimentos+Faciais',
-    icon: 'Smile'
+    icon: 'Smile',
+    subServices: [
+      {
+        id: 'limpeza-pele',
+        title: 'Limpeza de Pele',
+        description: 'Remove impurezas, desobstrui os poros e promove a revitalização.',
+        icon: 'Sparkles'
+      },
+      {
+        id: 'peeling',
+        title: 'Peeling',
+        description: 'Promove a renovação celular, melhorando a textura e aparência.',
+        icon: 'Activity'
+      },
+      {
+        id: 'preenchimento',
+        title: 'Preenchimento Facial',
+        description: 'Estimula o colágeno, dando firmeza e elasticidade.',
+        icon: 'Heart'
+      },
+      {
+        id: 'skinbooster',
+        title: 'Skinbooster',
+        description: 'Hidratação profunda e suavização de linhas finas com ácido hialurônico.',
+        icon: 'Droplets'
+      },
+      {
+        id: 'perfect-peel',
+        title: 'Perfect Peel',
+        description: 'Tecnologia exclusiva para o clareamento e uniformização do tom da pele.',
+        icon: 'Zap'
+      },
+      {
+        id: 'microagulhamento',
+        title: 'Microagulhamento',
+        description: 'Deixa a região tratada com uma aparência mais bonita, jovem e saudável.',
+        icon: 'Grid'
+      },
+      {
+        id: 'md-codes',
+        title: 'MD Codes',
+        description: 'Técnica de preenchimento que restaura volume e oferece efeito lifting.',
+        icon: 'TrendingUp'
+      },
+      {
+        id: 'botox',
+        title: 'Toxina Botulínica (Botox)',
+        description: 'Suaviza as rugas e linhas de expressão do rosto.',
+        icon: 'Activity'
+      },
+      {
+        id: 'fios-seda',
+        title: 'Hidratação Fios de Seda',
+        description: 'Hidratação profunda através das fibras naturais do casulo do bicho da seda.',
+        icon: 'Sparkles'
+      },
+      {
+        id: 'peeling-diamante',
+        title: 'Peeling de Diamante',
+        description: 'Esfoliação profunda que retira as células mortas.',
+        icon: 'Activity'
+      },
+      {
+        id: 'peeling-quimico',
+        title: 'Peeling Químico',
+        description: 'Aplicação de ácidos para clareamento e diminuição de linhas finas.',
+        icon: 'Activity'
+      },
+      {
+        id: 'preenchimento-labial',
+        title: 'Preenchimento Labial',
+        description: 'Valoriza seus lábios de forma harmônica e natural.',
+        icon: 'Smile'
+      },
+      {
+        id: 'bioestimulador',
+        title: 'Bioestimulador de Colágeno',
+        description: 'Previne e trata sinais do envelhecimento com 7 benefícios.',
+        icon: 'Zap'
+      },
+      {
+        id: 'fios-pdo',
+        title: 'Fios de PDO',
+        description: 'Rejuvenescimento e efeito lifting com fios pouco invasivos.',
+        icon: 'Wind'
+      }
+    ]
   },
   {
     id: 'corporais',
     title: 'Procedimentos Corporais',
-    description: 'Os procedimentos corporais da clínica são planejados para promover beleza, saúde e bem-estar, utilizando tecnologias avançadas.',
+    description: 'Os procedimentos corporais da clínica são planejados para promover beleza, saúde e bem-estar.',
     image: 'https://placehold.co/800x600/fbcfe8/be185d?text=Procedimentos+Corporais',
     icon: 'Activity',
     subServices: [
