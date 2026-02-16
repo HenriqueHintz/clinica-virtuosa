@@ -5,13 +5,19 @@ export const SchemaMarkup: React.FC = () => {
   // Generate LocalBusiness Schema for each unit
   const localBusinesses = UNITS.map(unit => ({
     "@context": "https://schema.org",
-    "@type": "BeautySalon", // More specific than LocalBusiness
+    "@type": "BeautySalon",
     "name": `Clínica Estética Virtuosa - ${unit.name}`,
-    "image": "https://picsum.photos/800/600", // Replace with real logo/storefront
-    "@id": `https://virtuosa.com.br/#${unit.id}`,
-    "url": "https://virtuosa.com.br",
+    "image": "https://clinica-virtuosa.vercel.app/assets/hero/hero-bg.webp",
+    "logo": "https://clinica-virtuosa.vercel.app/assets/logo.svg",
+    "@id": `https://clinica-virtuosa.vercel.app/#${unit.id}`,
+    "url": "https://clinica-virtuosa.vercel.app",
     "telephone": unit.phone,
     "priceRange": "$$",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "2500"
+    },
     "address": {
       "@type": "PostalAddress",
       "streetAddress": unit.address.split(',')[0],
@@ -37,8 +43,8 @@ export const SchemaMarkup: React.FC = () => {
       "closes": "19:00"
     },
     "sameAs": [
-      "https://www.instagram.com/virtuosaestetica",
-      "https://www.facebook.com/virtuosaestetica"
+      "https://www.instagram.com/clinicavirtuosa",
+      "https://www.facebook.com/clinicavirtuosa"
     ]
   }));
 
@@ -47,8 +53,17 @@ export const SchemaMarkup: React.FC = () => {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Clínica Estética Virtuosa",
-    "url": "https://virtuosa.com.br",
-    "logo": "https://picsum.photos/200/200"
+    "url": "https://clinica-virtuosa.vercel.app",
+    "logo": "https://clinica-virtuosa.vercel.app/assets/logo.svg",
+    "sameAs": [
+      "https://www.instagram.com/clinicavirtuosa",
+      "https://www.facebook.com/clinicavirtuosa"
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "2500"
+    }
   };
 
   return (

@@ -34,23 +34,24 @@ export const Locations: React.FC = () => {
         <div className="flex md:hidden items-center justify-center gap-3 mb-4">
           <button 
             onClick={prevUnit}
-            className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 active:bg-brand-100 active:text-brand-500 transition-colors flex-shrink-0"
+            className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 active:bg-brand-500 active:text-white transition-all shadow-sm active:scale-90 flex-shrink-0"
             aria-label="Unidade anterior"
           >
-            <Icons.ChevronDown className="w-5 h-5 rotate-90" />
+            <Icons.ChevronDown className="w-6 h-6 rotate-90" />
           </button>
           
-          <div className="text-center min-w-[180px]">
-            <p className="font-bold text-gray-900 text-base">{selectedUnit.name}</p>
-            <p className="text-xs text-gray-500">{selectedIndex + 1} de {UNITS.length}</p>
+          <div className="text-center min-w-[160px] flex flex-col items-center">
+            <span className="text-[10px] uppercase font-bold text-brand-500 bg-brand-50 px-2 py-0.5 rounded-full mb-1 border border-brand-100">Unidade Selecionada</span>
+            <p className="font-black text-gray-900 text-lg leading-tight">{selectedUnit.name}</p>
+            <p className="text-xs text-gray-500 mt-1">{selectedIndex + 1} de {UNITS.length}</p>
           </div>
           
           <button 
             onClick={nextUnit}
-            className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 active:bg-brand-100 active:text-brand-500 transition-colors flex-shrink-0"
+            className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 active:bg-brand-500 active:text-white transition-all shadow-sm active:scale-90 flex-shrink-0"
             aria-label="Próxima unidade"
           >
-            <Icons.ChevronDown className="w-5 h-5 -rotate-90" />
+            <Icons.ChevronDown className="w-6 h-6 -rotate-90" />
           </button>
         </div>
 

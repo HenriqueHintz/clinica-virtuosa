@@ -103,15 +103,22 @@ export const About: React.FC = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="bg-brand-50/50 p-5 md:p-8 rounded-2xl md:rounded-3xl hover:bg-brand-50 transition-colors duration-300"
+                  className="bg-brand-50/50 p-5 md:p-8 rounded-2xl md:rounded-3xl hover:bg-brand-50 transition-colors duration-300 relative overflow-hidden group"
                 >
-                  <div className="w-10 h-10 md:w-12 md:h-12 bg-white rounded-xl shadow-sm flex items-center justify-center mb-3 md:mb-6 text-brand-500">
+                  <div className="absolute top-0 right-0 w-24 h-24 bg-brand-100/20 rounded-full -mr-12 -mt-12 group-hover:scale-150 transition-transform duration-500"></div>
+                  <div className="w-10 h-10 md:w-12 md:h-12 bg-white rounded-xl shadow-sm flex items-center justify-center mb-3 md:mb-6 text-brand-500 relative z-10">
                     <feature.icon className="w-5 h-5 md:w-6 md:h-6" />
                   </div>
-                  <h3 className="text-base md:text-xl font-bold text-gray-900 mb-1.5 md:mb-3">{feature.title}</h3>
-                  <p className="text-gray-600 leading-relaxed text-xs md:text-sm">
+                  <h3 className="text-base md:text-xl font-bold text-gray-900 mb-1.5 md:mb-3 relative z-10">{feature.title}</h3>
+                  <p className="text-gray-600 leading-relaxed text-xs md:text-sm relative z-10">
                     {feature.description}
                   </p>
+                  {feature.title === "Profissionais Certificados" && (
+                    <div className="mt-3 inline-flex items-center gap-1.5 text-[10px] font-bold text-brand-600 bg-brand-100 px-2 py-0.5 rounded-full uppercase tracking-tighter">
+                      <Icons.Shield className="w-3 h-3" />
+                      Anvisa
+                    </div>
+                  )}
                 </motion.div>
               ))}
             </div>

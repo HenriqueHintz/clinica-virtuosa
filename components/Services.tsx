@@ -15,13 +15,23 @@ export const Services: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-8">
-          {SERVICES.map((service) => {
+          {SERVICES.map((service, index) => {
             const IconComponent = (Icons as any)[service.icon] || Icons.Sparkles;
+            
+            // Unique color pairings for each service type to improve visual hierarchy
+            const colorSchemes = [
+              { bg: 'from-brand-100 to-brand-200', icon: 'text-brand-500' },
+              { bg: 'from-blue-100 to-blue-200', icon: 'text-blue-500' },
+              { bg: 'from-purple-100 to-purple-200', icon: 'text-purple-500' },
+              { bg: 'from-teal-100 to-teal-200', icon: 'text-teal-500' },
+            ];
+            const scheme = colorSchemes[index % colorSchemes.length];
+
             return (
               <div key={service.id} className="group bg-white rounded-xl md:rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100">
-                <div className="h-28 md:h-40 overflow-hidden relative bg-gradient-to-br from-brand-100 to-brand-200">
+                <div className={`h-28 md:h-40 overflow-hidden relative bg-gradient-to-br ${scheme.bg}`}>
                    <div className="absolute inset-0 flex items-center justify-center opacity-20">
-                     <IconComponent className="w-16 h-16 md:w-24 md:h-24 text-brand-500" />
+                     <IconComponent className={`w-16 h-16 md:w-24 md:h-24 ${scheme.icon}`} />
                    </div>
                 </div>
                 <div className="p-3 md:p-5 relative">

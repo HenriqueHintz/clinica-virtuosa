@@ -107,7 +107,11 @@ export const Header: React.FC = () => {
 
           {/* Mobile Menu Button */}
           <button 
-            className={`md:hidden p-2 relative z-[60] ${isScrolled ? 'text-gray-800' : 'text-white'}`}
+            className={`md:hidden p-2.5 rounded-full relative z-[60] transition-all active:scale-90 ${
+              isScrolled 
+                ? 'text-gray-800 bg-gray-100/50 backdrop-blur-sm' 
+                : 'text-white bg-white/10 backdrop-blur-md border border-white/20'
+            }`}
             onClick={() => setIsOpen(true)}
             aria-label="Abrir menu"
           >

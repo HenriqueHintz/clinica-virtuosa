@@ -57,7 +57,7 @@ export const Footer: React.FC = () => {
 
           {/* Contact */}
           <div className="col-span-2 md:col-span-1">
-            <h4 className="text-base md:text-lg font-bold mb-4 md:mb-6">Contato Central</h4>
+            <h4 className="text-base md:text-lg font-bold mb-4 md:mb-6 uppercase tracking-widest text-brand-500">Contato Central</h4>
             <ul className="space-y-3 md:space-y-4 text-xs md:text-sm text-gray-400">
               <li className="flex items-start gap-2 md:gap-3">
                 <Icons.Mail className="w-4 h-4 md:w-5 md:h-5 text-brand-500 flex-shrink-0 mt-0.5" />
@@ -65,17 +65,35 @@ export const Footer: React.FC = () => {
               </li>
               <li className="flex items-start gap-2 md:gap-3">
                 <Icons.Phone className="w-4 h-4 md:w-5 md:h-5 text-brand-500 flex-shrink-0 mt-0.5" />
-                <span>0800 123 4567</span>
+                <span>(48) 3091-1777</span>
+              </li>
+              <li className="flex items-start gap-2 md:gap-3">
+                <Icons.WhatsApp className="w-4 h-4 md:w-5 md:h-5 text-brand-500 flex-shrink-0 mt-0.5" />
+                <span>(48) 99124-4978</span>
               </li>
             </ul>
+            
+            <div className="mt-8 flex flex-wrap gap-4 opacity-40 grayscale hover:grayscale-0 transition-all duration-500">
+               <div className="flex items-center gap-1 border border-white/20 px-2 py-1 rounded">
+                 <Icons.Shield className="w-4 h-4" />
+                 <span className="text-[10px] font-bold">ANVISA</span>
+               </div>
+               <div className="flex items-center gap-1 border border-white/20 px-2 py-1 rounded">
+                 <Icons.CheckCircle className="w-4 h-4" />
+                 <span className="text-[10px] font-bold">ABESE</span>
+               </div>
+            </div>
           </div>
         </div>
 
         <div className="border-t border-gray-800 pt-6 md:pt-8 flex flex-col md:flex-row justify-between items-center gap-3 text-[10px] md:text-xs text-gray-500">
-          <p>&copy; {currentYear} Clínica Estética Virtuosa. Todos os direitos reservados.</p>
+          <div className="text-center md:text-left">
+            <p>&copy; {currentYear} Clínica Estética Virtuosa. 00.322.251/0001-40</p>
+            <p className="mt-1 opacity-50 uppercase tracking-tighter">Resultados podem variar de pessoa para pessoa</p>
+          </div>
           <div className="flex gap-4">
-            <a href="#" className="hover:text-white">Política de Privacidade</a>
-            <a href="#" className="hover:text-white">Termos de Uso</a>
+            <a href="#" className="hover:text-white transition-colors">Privacidade</a>
+            <a href="#" className="hover:text-white transition-colors">Termos</a>
           </div>
         </div>
       </div>
